@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using LibGit2Sharp;
 
-namespace CraftopiaNedclanSync
+namespace CraftopiaNedclanLauncher
 {
     class Program
     {
