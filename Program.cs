@@ -98,16 +98,15 @@ namespace CraftopiaNedclanSync
                 return;
             }
 
-            // Start the game
+            // Start the game immediately when we're on Windows
             var gameExeWindows = Path.Combine(exeDir, "Craftopia.exe");
-            var gameExeLinuxServer = Path.Combine(exeDir, "Craftopia.x86_64");
-            var gameExe = new[] {gameExeWindows, gameExeLinuxServer}.Where(x => File.Exists(x)).FirstOrDefault();
-            if (gameExe != null)
+            if (File.Exists(gameExeWindows))
             {
-                Console.WriteLine($"Found game executable, starting: {gameExe} {string.Join(" ", args)}");
-                var gameProcess = Process.Start(gameExe, args);
-                Console.WriteLine($"Game exited or started in background!");
+                Console.WriteLine($"Found game executable, starting: {gameExeWindows} {string.Join(" ", args)}");
+                var gameProcess = Process.Start(gameExeWindows, args);
             }
+
+            Console.WriteLine("All done!");
         }
 
         static string CalculateFileHash(string path)
